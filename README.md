@@ -1,4 +1,4 @@
-# BoMAS Agent 🧪🤖
+# ChemBoMAS 🧪🤖
 
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/release/python-3120/)
 [![Google ADK](https://img.shields.io/badge/Google%20ADK-Enabled-green)](https://developers.google.com/adk)
@@ -8,6 +8,8 @@
 [中文](#bomas-项目描述) | [English](#bomas-project-description)
 
 ---
+
+> **项目状态：实验性原型（alpha）。** 当前代码展示从 CSV 数据验证到贝叶斯优化建议和结果分析的端到端工作流。它用于研究与流程辅助，不代替化学专业判断、风险评估或实验室安全程序。
 
 <a id="bomas-项目描述"></a>
 
@@ -93,7 +95,7 @@ graph TD
 
 1.  **克隆与设置**：
     ```bash
-    git clone https://github.com/githuweeee/ChemBoMAS.git
+    git clone https://github.com/Alyssa-syx/ChemBoMAS.git
     cd ChemBoMAS
     python -m venv .venv
     source .venv/bin/activate  # Windows: .\.venv\Scripts\Activate.ps1
@@ -101,7 +103,7 @@ graph TD
 
 2.  **安装依赖**：
     ```bash
-    pip install -r requirements.txt
+    python -m pip install -r requirements.txt
     ```
 
 3.  **配置环境**：
@@ -115,7 +117,7 @@ graph TD
 
 **默认 (Localhost:8000)**:
 ```bash
-adk web
+adk web .
 ```
 
 **自定义端口 / 外部访问**:
@@ -146,12 +148,31 @@ adk web --host 0.0.0.0 --port 8080
 
 ## 📂 文档
 详细文档请参阅
-- `快速开始指南.md` - 快速入门教程
+- [`快速开始指南.md`](快速开始指南.md) - 实验结果上传与迭代流程
+
+## ✅ 开发者检查
+
+```bash
+# 无需 API key 的语法检查
+python -m compileall -q agent_zyf
+```
+
+拉取请求会自动执行同样的基础检查。需要完整运行 Agent 时，再配置 `GOOGLE_API_KEY`。
+
+## ⚠️ 当前边界
+
+- 仅对仓库内说明的 CSV 数据结构做了针对性支持。
+- 化学知识库与参数边界是辅助建议，高风险实验必须由合格人员复核。
+- 运行结果会受 LLM 模型、依赖版本和输入数据质量影响。
+
+## 🤝 贡献
+
+欢迎通过 Issue 报告可复现的问题，或通过 Pull Request 提交改进。提交前请运行上述基础检查，并在描述中写明输入数据结构、期望结果和实际结果。
 ---
 
 <a id="bomas-project-description"></a>
 
-# BoMAS Project Description
+# ChemBoMAS Project Description
 
 **BoMAS** (Chemical Bayesian Optimization Multi-Agent System) is an intelligent chemical experiment optimization system built on the **Google Agent Development Kit (ADK)** and the **BayBE** Bayesian optimization framework. The system employs a multi-agent collaborative architecture to achieve a complete closed-loop workflow from data validation, SMILES molecular structure processing, experimental condition recommendation, result analysis, to continuous iterative optimization.
 
@@ -203,7 +224,7 @@ graph TD
 
 1.  **Clone & Setup**:
     ```bash
-    git clone https://github.com/githuweeee/ChemBoMAS.git
+    git clone https://github.com/Alyssa-syx/ChemBoMAS.git
     cd ChemBoMAS
     python -m venv .venv
     source .venv/bin/activate  # Windows: .\.venv\Scripts\Activate.ps1
@@ -211,7 +232,7 @@ graph TD
 
 2.  **Install Dependencies**:
     ```bash
-    pip install -r requirements.txt
+    python -m pip install -r requirements.txt
     ```
 
 3.  **Configure Environment**:
@@ -225,7 +246,7 @@ graph TD
 
 **Default (Localhost:8000)**:
 ```bash
-adk web
+adk web .
 ```
 
 **Custom Port / External Access**:
@@ -254,9 +275,9 @@ It is recommended to refer to the example.csv file in the root directory to reco
 - **Name Column**: Columns with names containing `name` will be recognized and can be used to correct invalid SMILES.  
 - **Missing Values**: Parameter/target columns should avoid empty cells, as they may be filtered or cause validation failures. 
 
-## 📂 Documentation 
-For detailed documentation, please refer to
-- `Quick Start Guide.md` - Quick Start Tutorial
+## 📂 Documentation
+
+See [`快速开始指南.md`](快速开始指南.md) for the experiment-result upload and iteration workflow. The guide is currently maintained in Chinese.
 
 ## 📄 License
 

@@ -9,9 +9,8 @@ Portions of this project contain code and headers originating from Google LLC an
 License text:
 - https://www.apache.org/licenses/LICENSE-2.0
 
-## MIT License
+## Dependency notices
 
-The `edbo` package and its packaging metadata include MIT license notices and attribution.
-
-License text:
-- https://opensource.org/licenses/MIT
+ChemBoMAS depends on third-party packages listed in `requirements.txt`. Those
+packages are not redistributed by this repository and remain governed by their
+respective licenses. Review their licenses before redistribution or deployment.
